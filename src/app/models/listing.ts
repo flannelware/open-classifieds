@@ -1,0 +1,33 @@
+export interface Listing {
+	category: string;
+	cellPhone: string;
+	city: string;
+	contentType: string;
+	createTime: Date;
+	description: string;
+	displayTime: Date;
+	email: number;
+	emailCanonical: string;
+	expireTime: Date;
+	favorited: number;
+	homePhone: string;
+	id: number;
+	lat: number;
+	listingType: string;
+	lon: number;
+	marketType: string;
+	memberId: number;
+	modifyTime: Date;
+	mongoId: string;
+	name: string;
+	pageviews: number;
+	pageViews: number;
+	photo: string;
+	price: number;
+	sellerType: string;
+	source: string;
+	state: string;
+	subCategory: string;
+	title: string;
+	zip: string;
+}

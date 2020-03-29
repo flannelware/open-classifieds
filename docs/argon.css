@@ -13344,6 +13344,7 @@ a.btn-icon-only {
 }
 
 .card-profile-stats>div .description {
+	white-space: pre-line;
     font-size: .875rem;
     color: #adb5bd
 }
@@ -18377,8 +18378,12 @@ pre>code.highlight {
     margin-left: 1rem
 }
 .docs .tab-content{
-  padding: 1.25rem;
-border: 1px solid #e6ecf1;
-border-radius: .25rem;
-background-color: #f5f7f9;
+	padding: 1.25rem;
+	border: 1px solid #e6ecf1;
+	border-radius: .25rem;
+	background-color: #f5f7f9;
+}
+
+.preserve-line-breaks{
+	white-space: pre-wrap;
 }

@@ -1,0 +1,56 @@
+<main>
+	<div class="position-relative">
+		<!-- shape Hero -->
+		<section class="section section-lg section-shaped pb-150">
+			<div class="shape shape-style-1 shape-default">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<!-- SVG separator -->
+			<div class="separator separator-bottom separator-skew">
+				<svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+					xmlns="http://www.w3.org/2000/svg">
+					<polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+				</svg>
+			</div>
+		</section>
+		<!-- 1st Hero Variation -->
+	</div>
+	<section *ngIf="listing" class="section section-lg pt-lg-0 mt--100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 mb-lg-auto">
+					<div class="rounded overflow-hidden">
+						<ngb-carousel>
+							<ng-template *ngFor="let photo of listing.photo" ngbSlide>
+								<img class="img-fluid" [src]="photo.id" alt="photo.originalFileName">
+							</ng-template>
+						</ngb-carousel>
+					</div>
+					<small style="float: right;">{{listing.photo.length}} Photos</small>
+					<h5 class="mt-sm">{{listing.title}}</h5>
+					<h5 class="text-primary"><b>{{listing.price | currency}}</b></h5>
+					<div>
+						<span class="badge badge-pill badge-primary">{{listing.city}},
+							{{listing.state}}</span>
+						<span class="badge badge-pill badge-success"><i class="fa fa-eye"></i>
+							{{listing.pageViews}}</span>
+						<span class="badge badge-pill badge-warning"><i class="fa fa-heart"></i>
+							{{listing.favorited}}</span>
+					</div>
+					<div class="mt-sm">
+						<p class="angular-with-newlines" [innerHTML]="listing.description"></p>
+						<small><a [href]="kslUrl" target="_blank">View on KSL</a></small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>

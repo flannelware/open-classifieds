@@ -1,7 +1,7 @@
 <main>
 	<div class="position-relative">
 		<!-- shape Hero -->
-		<section class="section section-lg section-shaped pb-150">
+		<section class="section section-lg section-shaped pb-0">
 			<div class="shape shape-style-1 shape-default">
 				<span></span>
 				<span></span>
@@ -23,7 +23,10 @@
 		</section>
 		<!-- 1st Hero Variation -->
 	</div>
-	<section *ngIf="listing" class="section section-lg pt-lg-0 mt--100">
+
+	<div style="text-align: center;"><i *ngIf="loading" class="fa fa-4x fa-spin fa-circle-o-notch"></i></div>
+
+	<section *ngIf="listing" class="section section-lg pt-lg-0 mt--500">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 mb-lg-auto">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Listing } from '../models/listing';
 import { ImageService } from '../services/image.service';
 import { SearchService } from '../services/search.service';
@@ -11,26 +11,29 @@ import { SearchService } from '../services/search.service';
 })
 
 export class SearchComponent implements OnInit {
-	focus: any;
-	focus1: any;
-
-	searchQuery: string;
+	searchTerm: string;
 	listings: Listing[];
 	kslUrl: string;
 	listing: any;
 	searching: boolean;
 	errors: any;
 
-	constructor(private router: Router, private searchService: SearchService, private imageService: ImageService) { }
+	constructor(private route: ActivatedRoute, private router: Router, private searchService: SearchService, private imageService: ImageService) { }
 
 	ngOnInit() {
-		this.search("nintendo switch");
+		this.route.paramMap.subscribe(params => {
+			this.searchTerm = params.get('searchTerm');
+		});
+
+		if (this.searchTerm) {
+			this.search(this.searchTerm);
+		}
 	}
 
 	search(searchQuery: string) {
 		this.searching = true;
 		this.reset();
-		this.router.navigate(['/landing'], { queryParams: { order: 'popular' } });
+		this.router.navigate([`/search/${this.searchTerm}`]);
 		this.searchService.search(searchQuery)
 			.subscribe(
 				(data: { listings, kslUrl }) => {

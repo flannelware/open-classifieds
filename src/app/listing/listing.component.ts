@@ -14,6 +14,8 @@ export class ListingComponent implements OnInit {
 	kslUrl: string;
 	listingId: number;
 	listing: Listing;
+	loading: boolean;
+
 	constructor(private route: ActivatedRoute, private listingService: ListingService, private imageService: ImageService) { }
 
 	ngOnInit(): void {
@@ -21,6 +23,7 @@ export class ListingComponent implements OnInit {
 			this.listingId = +params.get('id');
 		});
 
+		this.loading = true;
 		this.getListing(this.listingId);
 	}
 
@@ -30,6 +33,7 @@ export class ListingComponent implements OnInit {
 			.subscribe((data: { listing, kslUrl }) => {
 				this.listing = data.listing;
 				this.kslUrl = data.kslUrl;
+				this.loading = false;
 			});
 
 	}

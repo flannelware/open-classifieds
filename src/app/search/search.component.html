@@ -30,10 +30,11 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
 					</div>
-					<input name="searchQuery" class="form-control" placeholder="Search Listings" type="text"
-						[(ngModel)]="searchQuery" (keyup.enter)="search(searchQuery)" autofocus />
+					<input name="searchTerm" class="form-control" placeholder="Search Listings" type="text"
+						[(ngModel)]="searchTerm" (keyup.enter)="search(searchTerm)" [disabled]="searching" autofocus />
 					<button class="ml-1 btn btn-2 btn-neutral" button="submit"
-						(click)="search(searchQuery)">{{searching ? 'Searching...' : 'Search'}}</button>
+						(click)="search(searchTerm)">{{searching ? 'Searching...' : 'Search'}} <i *ngIf="searching"
+							class="fa fa-spin fa-circle-o-notch"></i></button>
 				</div>
 			</div>
 			<div *ngIf="listings?.length === 0 && !searching">

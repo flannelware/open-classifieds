@@ -29,7 +29,7 @@
 	<section *ngIf="listing" class="section section-lg pt-lg-0 mt--500">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6 mb-lg-auto">
+				<div class="col-lg-4 mb-lg-auto">
 					<div class="rounded overflow-hidden">
 						<ngb-carousel>
 							<ng-template *ngFor="let photo of listing.photo" ngbSlide>
@@ -37,21 +37,52 @@
 							</ng-template>
 						</ngb-carousel>
 					</div>
-					<small style="float: right;">{{listing.photo.length}} Photos</small>
-					<h5 class="mt-sm">{{listing.title}}</h5>
-					<h5 class="text-primary"><b>{{listing.price | currency}}</b></h5>
 					<div>
-						<span class="badge badge-pill badge-primary">{{listing.city}},
-							{{listing.state}}</span>
+						<span class="badge badge-pill badge-primary"><i class="fa fa-map-pin"></i>
+							{{listing.city}}, {{listing.state}}</span>
 						<span class="badge badge-pill badge-success"><i class="fa fa-eye"></i>
 							{{listing.pageViews}}</span>
 						<span class="badge badge-pill badge-warning"><i class="fa fa-heart"></i>
 							{{listing.favorited}}</span>
+						<span class="badge badge-pill badge-info"><i class="fa fa-camera"></i>
+							{{listing.photo.length}}</span>
 					</div>
-					<div class="mt-sm">
-						<p class="angular-with-newlines" [innerHTML]="listing.description"></p>
-						<small><a [href]="kslUrl" target="_blank">View on KSL</a></small>
+					<h5>{{listing.title}}</h5>
+					<h5 class="text-primary"><b>{{listing.price | currency}}</b></h5>
+					<div class="row">
+						<div class="col-4">
+							<p class="angular-with-newlines" [innerHTML]="listing.description"></p>
+						</div>
 					</div>
+					<div class="row">
+						<div class="col">
+							<b><i class="fa fa-user"></i> {{listing.contactName}}</b>
+							<div><b><i class="fa fa-comment"></i> {{listing.contactCellPhone}}</b></div>
+							<div><small>Member Since {{formatDate(sellerData.sellerAccountAge) | date}}</small></div>
+						</div>
+						<div *ngIf="listing.contactHomePhone != listing.contactCellPhone">
+							<div class="col"><span><b><i class="fa fa-phone"></i>
+										{{listing.contactHomePhone}}</b></span>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-sm">
+						<div class="col">
+							<ul class="list-unstyled">
+								<li><small><b>Listing Details</b></small></li>
+								<li><small>Listing Number <b>{{listing.id}}</b></small></li>
+								<li><small>Posted <b>{{formatDate(listing.createTime) | date}}</b></small></li>
+								<li><small>Expires <b>{{formatDate(listing.expireTime) | date}}</b></small></li>
+								<li><small>Category <b>{{listing.category}}</b></small></li>
+								<li><small>Sub Category <b>{{listing.subCategory}}</b></small></li>
+								<small><a [href]="kslUrl" target="_blank">View on KSL</a></small>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 mb-lg-auto">
+					<h4 class="text-primary">More from this seller</h4>
+					<app-listing-grid [listings]="sellerData.moreListingsFromSeller"></app-listing-grid>
 				</div>
 			</div>
 		</div>

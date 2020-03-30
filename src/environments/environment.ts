@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	baseApiUrl: 'https://d9vj4i9f6i.execute-api.us-east-1.amazonaws.com/dev'
+	baseApiUrl: 'https://api.openclassifieds.app'
 };
 
 /*

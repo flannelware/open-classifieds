@@ -16,6 +16,7 @@ import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
+import { ListingGridComponent } from './shared/listing-grid/listing-grid.component';
 
 @NgModule({
 	declarations: [
@@ -28,7 +29,8 @@ import { SignupComponent } from './signup/signup.component';
 		SearchComponent,
 		ListingComponent,
 		SearchHistoryComponent,
-		AboutComponent
+		AboutComponent,
+		ListingGridComponent
 	],
 	imports: [
 		BrowserModule,

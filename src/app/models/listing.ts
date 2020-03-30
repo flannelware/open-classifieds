@@ -10,6 +10,9 @@ export interface Listing {
 	emailCanonical: string;
 	expireTime: Date;
 	favorited: number;
+	contactName: string;
+	contactHomePhone: string;
+	contactCellPhone: string;
 	homePhone: string;
 	id: number;
 	lat: number;

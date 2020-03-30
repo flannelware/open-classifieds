@@ -14,6 +14,7 @@ export class ListingComponent implements OnInit {
 	kslUrl: string;
 	listingId: number;
 	listing: Listing;
+	sellerData: any;
 	loading: boolean;
 
 	constructor(private route: ActivatedRoute, private listingService: ListingService, private imageService: ImageService) { }
@@ -22,16 +23,16 @@ export class ListingComponent implements OnInit {
 		this.route.paramMap.subscribe(params => {
 			this.listingId = +params.get('id');
 		});
-
+		this.listing = null;
 		this.loading = true;
 		this.getListing(this.listingId);
 	}
 
-
 	getListing(id: number): any {
 		this.listingService.getListing(this.listingId)
-			.subscribe((data: { listing, kslUrl }) => {
+			.subscribe((data: { listing, kslUrl, sellerData }) => {
 				this.listing = data.listing;
+				this.sellerData = data.sellerData;
 				this.kslUrl = data.kslUrl;
 				this.loading = false;
 			});
@@ -40,6 +41,10 @@ export class ListingComponent implements OnInit {
 
 	getPhotoUrl(imageUrl: string) {
 		return this.imageService.getPhotoUrl(imageUrl);
+	}
+
+	formatDate(date: any) {
+		return new Date(date * 1000);
 	}
 
 }
